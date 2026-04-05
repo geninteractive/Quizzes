@@ -1,58 +1,282 @@
 [
   {
-    "tag": "ux-basico",
-    "question": "¿Cuál es el objetivo principal del UX?",
+    "tag": "UI-S1",
+    "question": "Según el texto, ¿de qué depende hacer buenos diseños armónicos y funcionales?",
     "options": [
-      "Diseñar interfaces visuales",
-      "Mejorar la experiencia del usuario",
-      "Optimizar bases de datos"
+      "De la inspiración de diseñadores iluminados",
+      "Del conocimiento de leyes y principios de diseño",
+      "De las percepciones subjetivas del diseñador"
     ],
     "correct": 1,
     "feedback": {
-      "correct": "Correcto. UX se enfoca en la experiencia completa del usuario.",
-      "incorrect": "No exactamente. UX va más allá de lo visual o técnico."
+      "correct": "Correcto. El diseño armónico y funcional se basa en leyes y principios, no en percepciones subjetivas.",
+      "incorrect": "No es correcto. El texto menciona que no es cosa de seres iluminados, sino de conocimiento aplicado."
     }
   },
   {
-    "tag": "ux-basico",
-    "question": "¿Qué técnica pertenece a investigación UX?",
+    "tag": "UI-S1",
+    "question": "¿Cuál es la frase mencionada en el texto que se usa para darle prioridad a algo o establecer un orden lógico?",
     "options": [
-      "Entrevistas con usuarios",
-      "Diseño de logos",
-      "Programación backend"
-    ],
-    "correct": 0,
-    "feedback": {
-      "correct": "Bien. Las entrevistas son clave para entender al usuario.",
-      "incorrect": "Esto no corresponde directamente a investigación UX."
-    }
-  },
-  {
-    "tag": "ui",
-    "question": "¿Qué significa UI?",
-    "options": [
-      "User Interaction",
-      "User Interface",
-      "Universal Integration"
+      "El orden es lo primero",
+      "Primero mi primaria",
+      "La lógica ante todo"
     ],
     "correct": 1,
     "feedback": {
-      "correct": "Correcto. UI significa interfaz de usuario.",
-      "incorrect": "Revisa el concepto de interfaz."
+      "correct": "Correcto. La frase es 'Primero mi primaria', usada para priorizar elementos.",
+      "incorrect": "Incorrecto. La frase específica que se menciona es otra."
     }
   },
   {
-    "tag": "ux-basico",
-    "question": "¿Cuál es una buena práctica en UX?",
+    "tag": "UI-S1",
+    "question": "¿Qué autor es referenciado en el PDF con su libro 'Diseño emocional'?",
     "options": [
-      "Diseñar sin validar",
-      "Probar con usuarios",
-      "Seguir solo tendencias visuales"
+      "Andrew Hanson",
+      "Rob Dodson",
+      "Don Norman"
+    ],
+    "correct": 2,
+    "feedback": {
+      "correct": "Correcto. Don Norman es el autor del libro 'Diseño emocional' (Emotional Design).",
+      "incorrect": "No es correcto. El autor referenciado es un reconocido experto en diseño."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "¿Cuál de los siguientes NO es un nivel del diseño emocional según Don Norman?",
+    "options": [
+      "Nivel visceral",
+      "Nivel conductual",
+      "Nivel estético"
+    ],
+    "correct": 2,
+    "feedback": {
+      "correct": "Correcto. Los niveles son visceral, conductual y reflexivo; 'estético' no es uno de ellos.",
+      "incorrect": "Incorrecto. Revisa los tres niveles propuestos por Don Norman en el texto."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "El nivel 'reflexivo' del diseño emocional se ocupa de:",
+    "options": [
+      "Respuestas instintivas a estímulos sensoriales",
+      "Usabilidad y eficiencia en la interacción",
+      "Percepciones conscientes y significado personal del producto"
+    ],
+    "correct": 2,
+    "feedback": {
+      "correct": "Correcto. El nivel reflexivo abarca evaluaciones conscientes y conexiones emocionales duraderas.",
+      "incorrect": "No es correcto. Ese nivel se relaciona con la reflexión y el significado personal."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "En el ejemplo de la app de meditación, ¿qué aspecto corresponde al diseño conductual?",
+    "options": [
+      "Colores suaves y tipografía elegante",
+      "Sesiones fáciles de iniciar y transiciones intuitivas",
+      "Artículos sobre mindfulness y seguimiento del progreso personal"
     ],
     "correct": 1,
     "feedback": {
-      "correct": "Exacto. La validación es clave en UX.",
-      "incorrect": "En UX es clave validar con usuarios."
+      "correct": "Correcto. El diseño conductual se enfoca en una experiencia fluida y sin fricciones.",
+      "incorrect": "Incorrecto. Revisa la definición de cada nivel aplicada al ejemplo."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "¿Qué formación académica tiene Donald Norman, según el texto?",
+    "options": [
+      "Diseño y Psicología",
+      "Ingeniería Eléctrica y Psicología",
+      "Ingeniería de Software y Diseño"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Norman tiene formación en Ingeniería Eléctrica y Psicología.",
+      "incorrect": "No es correcto. El texto menciona específicamente dos disciplinas."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "¿Qué efecto describe la ley de UX 'Efecto Estético-Usabilidad'?",
+    "options": [
+      "Los diseños feos siempre funcionan mejor",
+      "Los usuarios perciben un diseño estéticamente agradable como más útil",
+      "La usabilidad no tiene relación con la estética"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Este efecto indica que lo estético influye positivamente en la percepción de utilidad.",
+      "incorrect": "Incorrecto. Revisa la definición de este heurístico en el PDF."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "Según el texto, ¿cómo prefiere el autor usar las líneas en las interfaces?",
+    "options": [
+      "De 5 píxeles y colores brillantes",
+      "De 1 píxel y en tonos de bajo contraste",
+      "De trazos punteados y muy gruesos"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. El autor prefiere líneas sutiles de 1 px que no sean protagonistas.",
+      "incorrect": "No es correcto. El texto especifica un grosor y contraste particulares."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "En diseño UI, ¿cuál es la forma más popular según el material?",
+    "options": [
+      "Los círculos",
+      "Los triángulos",
+      "Los rectángulos"
+    ],
+    "correct": 2,
+    "feedback": {
+      "correct": "Correcto. Los rectángulos (a menudo con esquinas redondeadas) son los más populares en UI.",
+      "incorrect": "Incorrecto. Piensa en componentes como botones o tarjetas."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "¿A qué se refiere el concepto de 'espacio negativo' o 'espacio en blanco'?",
+    "options": [
+      "Al espacio que sobra y debe eliminarse",
+      "Al espacio que permite 'respirar' a los diseños",
+      "A los errores en blanco de la interfaz"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. El espacio en blanco es tan importante como el contenido para dar orden y confort.",
+      "incorrect": "No es correcto. El texto lo compara con el orden en una vivienda."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "¿Qué significa el 'valor' en el contexto del diseño visual?",
+    "options": [
+      "El precio del diseño",
+      "El contraste entre el contenido y el fondo",
+      "La saturación del color"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. El valor se refiere al contraste; a mayor contraste, mayor valor.",
+      "incorrect": "Incorrecto. Se relaciona con la jerarquía visual y el contraste."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "¿Cuál es una condición visual común mencionada que afecta la percepción del rojo y el verde?",
+    "options": [
+      "Miopía",
+      "Daltonismo (Deuteranopia y Protanopia)",
+      "Astigmatismo"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. En los tipos más comunes de daltonismo, rojo y verde son muy parecidos.",
+      "incorrect": "No es correcto. El texto menciona una condición específica relacionada con los colores."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "¿Qué recomienda el texto para reforzar mensajes en diseño accesible?",
+    "options": [
+      "Usar solo texto en negritas",
+      "Acompañar los mensajes con iconos",
+      "Aumentar el brillo de la pantalla"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Los iconos son una alternativa eficiente para reforzar mensajes.",
+      "incorrect": "Incorrecto. Hay una técnica visual adicional que ayuda."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "Según la 'Regla 6-3-1' o proporción áurea, ¿qué porcentaje debe ocupar el color principal?",
+    "options": [
+      "30%",
+      "60%",
+      "10%"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. El color principal ocupa el 60%, idealmente un tono neutral.",
+      "incorrect": "No es correcto. Revisa la distribución de porcentajes en la paleta."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "En la regla 6-3-1, ¿cuál es la función del color de acento (10%)?",
+    "options": [
+      "Ser el fondo principal",
+      "Acentuar o llamar la atención",
+      "Complementar sin contraste"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. El color de acento es más 'inquieto' y su misión es acentuar.",
+      "incorrect": "Incorrecto. Su nombre indica su función principal."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "¿Qué recomendación da el texto sobre las sombras en diseño de interfaces?",
+    "options": [
+      "Las sombras siempre deben ser negras",
+      "Las sombras no son negras, son del color del objeto",
+      "Las sombras deben ser muy densas para notarse"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Una sombra es del color del objeto, no negro puro.",
+      "incorrect": "No es correcto. El texto advierte sobre un error común de principiantes."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "¿Qué herramienta o recurso menciona el PDF para revisar niveles de contraste accesible?",
+    "options": [
+      "Photoshop",
+      "El canal A11ycasts con Rob Dodson",
+      "Figma"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Se menciona un capítulo de A11ycasts con Rob Dodson para revisar contraste.",
+      "incorrect": "Incorrecto. El texto hace referencia a un recurso específico en video."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "¿Qué sugiere el 'Tip pro' sobre los tonos grises y negros?",
+    "options": [
+      "Usar siempre negro 100% para texto",
+      "Teñirlos con los colores del esquema para crear tonalidades amigables",
+      "Evitarlos por completo"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Los grises y negros puros pueden ser poco amigables; es mejor teñirlos.",
+      "incorrect": "Incorrecto. El tip busca hacer los tonos neutros más armónicos."
+    }
+  },
+  {
+    "tag": "UI-S1",
+    "question": "Según el cierre del texto, ¿de qué depende la creación de productos que las personas puedan entender?",
+    "options": [
+      "De usar muchos colores diferentes",
+      "De entender qué producen las señales visuales en el cerebro",
+      "De seguir las modas de diseño"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Entender el impacto de las señales visuales en el cerebro da ventaja para construir productos comprensibles.",
+      "incorrect": "No es correcto. El texto enfatiza que diseñar no es cuestión de 'gustos' o modas."
     }
   }
 ]
