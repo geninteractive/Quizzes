@@ -4,90 +4,370 @@
   <meta charset="UTF-8">
   <title>Quiz UX</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: Arial, sans-serif;
+      background: #e3e9ed;
       padding: 20px;
-      max-width: 600px;
+    }
+
+    .quiz-wrapper {
+      max-width: 680px;
       margin: auto;
     }
-    .question {
-      margin-bottom: 20px;
+
+    /* Header */
+    .quiz-header {
+      background: linear-gradient(0deg, rgba(234,234,241,1) 0%, rgba(248,248,251,1) 100%);
+      border-left: 4px solid #e66000;
+      border-bottom: 1px solid #dbdbdb;
+      padding: 14px 20px 14px 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    button {
-      display: block;
-      margin: 5px 0;
-      padding: 10px;
+
+    .quiz-header h2 {
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .quiz-header .icon {
+      color: #e66000;
+      font-size: 1.1em;
+    }
+
+    /* Progress bar */
+    .progress-bar-container {
+      background: #d0d8de;
+      height: 6px;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+
+    .progress-bar-fill {
+      height: 6px;
+      background: #e66000;
+      transition: width 0.4s ease;
+    }
+
+    /* Content card */
+    .quiz-card {
+      background: #f7f7fa;
+      border-left: 4px solid #e66000;
+      padding: 28px 30px;
+    }
+
+    .progress-label {
+      font-size: 0.78em;
+      color: #777;
+      margin-bottom: 18px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .question-text {
+      font-size: 1.05em;
+      color: #222;
+      line-height: 1.6;
+      margin-bottom: 22px;
+      border-left: 3px solid #777;
+      padding: 8px 15px 8px 20px;
+      font-style: italic;
+      color: #555;
+      background: transparent;
+    }
+
+    /* Options */
+    .options-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .option-btn {
       width: 100%;
+      background: #fff;
+      border: 1.5px solid #c8d0d8;
+      border-radius: 4px;
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 0.97em;
+      color: #333;
       cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+      line-height: 1.5;
     }
-    .feedback {
-      margin-top: 10px;
+
+    .option-btn:hover:not(:disabled) {
+      border-color: #e66000;
+      background: #fff5ee;
+    }
+
+    .option-btn.selected {
+      border-color: #e66000;
+      background: #fff5ee;
+      color: #c45000;
       font-weight: bold;
+    }
+
+    .option-btn.correct {
+      border-color: #2e7d32;
+      background: #e8f5e9;
+      color: #1b5e20;
+      font-weight: bold;
+    }
+
+    .option-btn.incorrect {
+      border-color: #c62828;
+      background: #ffebee;
+      color: #b71c1c;
+      font-weight: bold;
+    }
+
+    .option-btn.dimmed {
+      opacity: 0.45;
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    /* Feedback box */
+    .feedback-box {
+      display: none;
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      border-left: 4px solid;
+    }
+
+    .feedback-box.correct {
+      background: #e8f5e9;
+      border-color: #2e7d32;
+      color: #1b5e20;
+    }
+
+    .feedback-box.incorrect {
+      background: #ffebee;
+      border-color: #c62828;
+      color: #b71c1c;
+    }
+
+    .feedback-box.visible {
+      display: block;
+    }
+
+    /* Action buttons */
+    .action-row {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .btn-check {
+      background: #e66000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 24px;
+      font-size: 0.95em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-check:hover:not(:disabled) {
+      background: #c45000;
+    }
+
+    .btn-check:disabled {
+      background: #c8bfb8;
+      cursor: not-allowed;
+    }
+
+    .btn-next {
+      background: #fff;
+      color: #e66000;
+      border: 1.5px solid #e66000;
+      border-radius: 4px;
+      padding: 10px 24px;
+      font-size: 0.95em;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-next:hover {
+      background: #e66000;
+      color: #fff;
+    }
+
+    /* Completion */
+    .completion-box {
+      background: #f7f7fa;
+      border-left: 4px solid #e66000;
+      padding: 36px 30px;
+      text-align: center;
+    }
+
+    .completion-box h3 {
+      font-size: 1.3em;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .completion-box p {
+      color: #666;
+      font-size: 0.97em;
     }
   </style>
 </head>
 <body>
+<div class="quiz-wrapper">
 
-<h2>Autoevaluación</h2>
-<p id="progress"></p>
+  <div class="quiz-header">
+    <span class="icon">📋</span>
+    <h2><strong>Autoevaluación</strong></h2>
+  </div>
 
-<div id="quiz"></div>
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+  </div>
+
+  <div id="quiz"></div>
+
+</div>
 
 <script>
-const NUM_QUESTIONS = 3;
-let current = 0;
-let selectedQuestions = [];
+  const NUM_QUESTIONS = 3;
+  let current = 0;
+  let selectedQuestions = [];
+  let selectedOption = null;
+  let answered = false;
 
-fetch('questions.json')
-  .then(res => res.json())
-  .then(data => {
-    selectedQuestions = data
-      .sort(() => 0.5 - Math.random())
-      .slice(0, NUM_QUESTIONS);
-    showQuestion();
-  });
+  fetch('questions.json')
+    .then(res => res.json())
+    .then(data => {
+      selectedQuestions = data
+        .sort(() => 0.5 - Math.random())
+        .slice(0, NUM_QUESTIONS);
+      showQuestion();
+    });
 
-function showQuestion() {
-  const q = selectedQuestions[current];
-  const container = document.getElementById("quiz");
-  const progress = document.getElementById("progress");
-
-  progress.innerText = `Pregunta ${current + 1} de ${NUM_QUESTIONS}`;
-
-  container.innerHTML = `
-    <div class="question">
-      <p>${q.question}</p>
-      ${q.options.map((opt, i) => `
-        <button onclick="checkAnswer(${i})">${opt}</button>
-      `).join('')}
-      <div id="feedback" class="feedback"></div>
-    </div>
-  `;
-}
-
-function checkAnswer(index) {
-  const q = selectedQuestions[current];
-  const feedback = document.getElementById("feedback");
-
-  if (index === q.correct) {
-    feedback.innerText = q.feedback.correct;
-    feedback.style.color = "green";
-  } else {
-    feedback.innerText = q.feedback.incorrect;
-    feedback.style.color = "red";
+  function updateProgressBar() {
+    const pct = (current / NUM_QUESTIONS) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
   }
 
-  setTimeout(() => {
+  function showQuestion() {
+    selectedOption = null;
+    answered = false;
+    updateProgressBar();
+
+    const q = selectedQuestions[current];
+    const container = document.getElementById("quiz");
+
+    container.innerHTML = `
+      <div class="quiz-card">
+        <p class="progress-label">Pregunta ${current + 1} de ${NUM_QUESTIONS}</p>
+        <p class="question-text">📌 ${q.question}</p>
+        <ul class="options-list" id="optionsList">
+          ${q.options.map((opt, i) => `
+            <li class="option-item">
+              <button class="option-btn" id="opt-${i}" onclick="selectOption(${i})">${opt}</button>
+            </li>
+          `).join('')}
+        </ul>
+        <div id="feedback" class="feedback-box"></div>
+        <div class="action-row">
+          <button class="btn-check" id="btnCheck" onclick="checkAnswer()" disabled>Confirmar ✓</button>
+          <button class="btn-next" id="btnNext" onclick="nextQuestion()">Siguiente →</button>
+        </div>
+      </div>
+    `;
+  }
+
+  function selectOption(index) {
+    if (answered) return;
+
+    selectedOption = index;
+
+    // Reset visual state of all buttons
+    document.querySelectorAll('.option-btn').forEach((btn, i) => {
+      btn.classList.remove('selected');
+    });
+
+    document.getElementById(`opt-${index}`).classList.add('selected');
+    document.getElementById('btnCheck').disabled = false;
+  }
+
+  function checkAnswer() {
+    if (selectedOption === null || answered) return;
+    answered = true;
+
+    const q = selectedQuestions[current];
+    const feedback = document.getElementById("feedback");
+    const isCorrect = selectedOption === q.correct;
+
+    // Style all buttons
+    document.querySelectorAll('.option-btn').forEach((btn, i) => {
+      btn.disabled = true;
+      btn.classList.remove('selected');
+      if (i === q.correct) {
+        btn.classList.add('correct');
+      } else if (i === selectedOption && !isCorrect) {
+        btn.classList.add('incorrect');
+      } else {
+        btn.classList.add('dimmed');
+      }
+    });
+
+    // Show feedback
+    feedback.textContent = isCorrect ? q.feedback.correct : q.feedback.incorrect;
+    feedback.className = `feedback-box visible ${isCorrect ? 'correct' : 'incorrect'}`;
+
+    // Swap buttons
+    document.getElementById('btnCheck').style.display = 'none';
+    document.getElementById('btnNext').style.display = 'inline-block';
+
+    // Change label on last question
+    if (current === NUM_QUESTIONS - 1) {
+      document.getElementById('btnNext').textContent = 'Finalizar ✓';
+    }
+  }
+
+  function nextQuestion() {
     current++;
     if (current < NUM_QUESTIONS) {
       showQuestion();
     } else {
-      document.getElementById("quiz").innerHTML = "<h3>¡Completado!</h3>";
-      document.getElementById("progress").innerText = "";
+      const pct = 100;
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById("quiz").innerHTML = `
+        <div class="completion-box">
+          <h3>¡Autoevaluación completada! 🎉</h3>
+          <p>Has respondido todas las preguntas. Continúa con el siguiente tema.</p>
+        </div>
+      `;
     }
-  }, 1500);
-}
+  }
 </script>
-
 </body>
 </html>
