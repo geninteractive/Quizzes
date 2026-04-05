@@ -17,6 +17,51 @@
       padding: 20px;
     }
 
+    /* ── PANTALLA INICIAL ── */
+    .intro-box {
+      text-align: center;
+      padding: 10px 0 20px;
+    }
+
+    .intro-box h3 {
+      font-size: 1.1em;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .intro-box p {
+      font-size: 0.93em;
+      color: #555;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .intro-options {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-qty {
+      background: #fff;
+      border: 1.5px solid #5454E9;
+      color: #5454E9;
+      border-radius: 4px;
+      padding: 10px 22px;
+      font-size: 0.95em;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: 'Lato', Arial, sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-qty:hover {
+      background: #5454E9;
+      color: #fff;
+    }
+
+    /* ── QUIZ ── */
     .progress-label {
       font-size: 0.75em;
       color: #888;
@@ -51,6 +96,7 @@
       padding: 12px 16px;
       text-align: left;
       font-size: 0.95em;
+      font-family: 'Lato', Arial, sans-serif;
       color: #333;
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s;
@@ -128,6 +174,7 @@
       padding: 10px 20px;
       font-size: 0.92em;
       font-weight: bold;
+      font-family: 'Lato', Arial, sans-serif;
       cursor: pointer;
       transition: background 0.2s;
     }
@@ -149,6 +196,7 @@
       padding: 10px 20px;
       font-size: 0.92em;
       font-weight: bold;
+      font-family: 'Lato', Arial, sans-serif;
       cursor: pointer;
       display: none;
       transition: background 0.2s;
@@ -158,46 +206,142 @@
       background: #3333b0;
     }
 
-    .completion-box {
+    /* ── PANTALLA FINAL ── */
+    .results-box {
+      padding: 10px 0 20px;
+    }
+
+    .results-box h3 {
+      font-size: 1.1em;
+      color: #222;
+      margin-bottom: 16px;
+    }
+
+    .score-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .score-card {
+      flex: 1;
+      border-radius: 4px;
+      padding: 14px;
       text-align: center;
-      padding: 20px 0;
     }
 
-    .completion-box h3 {
-      font-size: 1.15em;
-      color: #333;
-      margin-bottom: 8px;
+    .score-card.good {
+      background: #e8f5e9;
+      border-left: 4px solid #2e7d32;
     }
 
-    .completion-box p {
+    .score-card.bad {
+      background: #ffebee;
+      border-left: 4px solid #c62828;
+    }
+
+    .score-card .number {
+      font-size: 2em;
+      font-weight: bold;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .score-card.good .number { color: #2e7d32; }
+    .score-card.bad .number  { color: #c62828; }
+
+    .score-card .label {
+      font-size: 0.8em;
       color: #666;
-      font-size: 0.93em;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .results-message {
+      font-size: 0.95em;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 22px;
+      padding: 14px 16px;
+      background: #f0f0fd;
+      border-left: 4px solid #5454E9;
+      border-radius: 4px;
+    }
+
+    .btn-retry {
+      background: #5454E9;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 11px 24px;
+      font-size: 0.95em;
+      font-weight: bold;
+      font-family: 'Lato', Arial, sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: block;
+      width: 100%;
+    }
+
+    .btn-retry:hover {
+      background: #3333b0;
     }
   </style>
 </head>
 <body>
-
 <div id="quiz"></div>
 
 <script>
-const NUM_QUESTIONS = 3;
-const params = new URLSearchParams(window.location.search);
-const TAG = params.get("tag") || "ux-basico"; // fallback si no se pasa tag
-let current = 0;
-let selectedQuestions = [];
-let selectedOption = null;
-let answered = false;
+  const params = new URLSearchParams(window.location.search);
+  const TAG = params.get("tag") || "ux-basico";
 
-fetch('questions.json')
-  .then(res => res.json())
-  .then(data => {
-    selectedQuestions = data
-      .filter(q => q.tag === TAG)
+  let NUM_QUESTIONS = 3;
+  let current = 0;
+  let correctCount = 0;
+  let incorrectCount = 0;
+  let selectedQuestions = [];
+  let selectedOption = null;
+  let answered = false;
+  let allQuestions = [];
+
+  fetch('questions.json')
+    .then(res => res.json())
+    .then(data => {
+      allQuestions = data.filter(q => q.tag === TAG);
+      showIntro();
+    });
+
+  // ── PANTALLA INICIAL ──
+  function showIntro() {
+    const available = allQuestions.length;
+    const options = [3, 5, 10, 20].filter(n => n <= available);
+
+    document.getElementById("quiz").innerHTML = `
+      <div class="intro-box">
+        <h3>¿Cuánto sabes de este tema? 🎯</h3>
+        <p>Elige cuántas preguntas quieres enfrentar.<br>A más preguntas, mayor el reto.</p>
+        <div class="intro-options">
+          ${options.map(n => `
+            <button class="btn-qty" onclick="startQuiz(${n})">${n} preguntas</button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // ── INICIAR QUIZ ──
+  function startQuiz(n) {
+    NUM_QUESTIONS = n;
+    current = 0;
+    correctCount = 0;
+    incorrectCount = 0;
+    selectedQuestions = allQuestions
       .sort(() => 0.5 - Math.random())
       .slice(0, NUM_QUESTIONS);
     showQuestion();
-  });
+  }
 
+  // ── PREGUNTA ──
   function showQuestion() {
     selectedOption = null;
     answered = false;
@@ -208,7 +352,7 @@ fetch('questions.json')
     container.innerHTML = `
       <p class="progress-label">Pregunta ${current + 1} de ${NUM_QUESTIONS}</p>
       <p class="question-text">📌 ${q.question}</p>
-      <ul class="options-list" id="optionsList">
+      <ul class="options-list">
         ${q.options.map((opt, i) => `
           <li>
             <button class="option-btn" id="opt-${i}" onclick="selectOption(${i})">${opt}</button>
@@ -226,7 +370,6 @@ fetch('questions.json')
   function selectOption(index) {
     if (answered) return;
     selectedOption = index;
-
     document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
     document.getElementById(`opt-${index}`).classList.add('selected');
     document.getElementById('btnCheck').disabled = false;
@@ -239,6 +382,8 @@ fetch('questions.json')
     const q = selectedQuestions[current];
     const feedback = document.getElementById("feedback");
     const isCorrect = selectedOption === q.correct;
+
+    if (isCorrect) correctCount++; else incorrectCount++;
 
     document.querySelectorAll('.option-btn').forEach((btn, i) => {
       btn.disabled = true;
@@ -258,9 +403,7 @@ fetch('questions.json')
     document.getElementById('btnCheck').style.display = 'none';
     const btnNext = document.getElementById('btnNext');
     btnNext.style.display = 'inline-block';
-    if (current === NUM_QUESTIONS - 1) {
-      btnNext.textContent = 'Finalizar ✓';
-    }
+    btnNext.textContent = current === NUM_QUESTIONS - 1 ? 'Ver resultados →' : 'Siguiente →';
   }
 
   function nextQuestion() {
@@ -268,22 +411,51 @@ fetch('questions.json')
     if (current < NUM_QUESTIONS) {
       showQuestion();
     } else {
-      document.getElementById("quiz").innerHTML = `
-        <div class="completion-box">
-          <h3>¡Autoevaluación completada! 🎉</h3>
-          <p>Has respondido todas las preguntas. Continúa con el siguiente tema.</p>
-        </div>
-      `;
+      showResults();
     }
   }
+
+  // ── PANTALLA FINAL ──
+  function showResults() {
+    const ratio = correctCount / NUM_QUESTIONS;
+    let message = "";
+    let showRetry = NUM_QUESTIONS < 20;
+
+    if (ratio >= 0.75) {
+      message = "¡Muy bien! Dominas el tema con soltura. Sigue así, ese nivel de preparación marca la diferencia. 💪";
+    } else if (ratio >= 0.5) {
+      message = "Vas por buen camino, pero todavía hay margen para mejorar. Vuélvelo a intentar y verás cómo subes el puntaje. 🔄";
+    } else {
+      message = "Parece que este tema merece una revisión más detallada. Repasa los contenidos de la unidad y vuelve cuando te sientas listo. 📖";
+    }
+
+    const retryBlock = showRetry ? `
+      <p style="font-size:0.88em; color:#777; margin-bottom:12px; text-align:center;">
+        ¿Quieres seguir practicando? Inténtalo de nuevo con una nueva selección de preguntas.
+      </p>
+      <button class="btn-retry" onclick="window.location.reload()">Volver a intentarlo 🔁</button>
+    ` : `
+      <button class="btn-retry" onclick="window.location.reload()">Repetir evaluación completa 🔁</button>
+    `;
+
+    document.getElementById("quiz").innerHTML = `
+      <div class="results-box">
+        <h3>Resultados</h3>
+        <div class="score-row">
+          <div class="score-card good">
+            <div class="number">${correctCount}</div>
+            <div class="label">Correctas</div>
+          </div>
+          <div class="score-card bad">
+            <div class="number">${incorrectCount}</div>
+            <div class="label">Incorrectas</div>
+          </div>
+        </div>
+        <div class="results-message">${message}</div>
+        ${retryBlock}
+      </div>
+    `;
+  }
 </script>
-    <!-- <div style="border-left: #9f2146 solid 4px;">
-    <div
-        style="background: linear-gradient(0deg, rgba(234, 234, 241, 1) 0%, rgba(248, 248, 251, 1) 100%); width: 100%; overflow: hidden; height: 60px; border-radius: 0 0 0 0; padding-top: 5px; border-bottom: #dbdbdb 1px solid;">
-        <h2 style="margin-left: 40px;"><i class="fas fa-inbox fa-sm" style="color: #9f2146;"></i><strong
-                style="margin-left: 10px;">Entregables</strong></h2>
-    </div>
-    <div style="background-color: #f7f7fa; padding: 20px 20px 20px 30px;"><iframe src="https://geninteractive.github.io/Quizzes/?tag=UI-S1" width="100%" height="370" loading="lazy"></iframe></div>
-</div> -->
 </body>
 </html>
