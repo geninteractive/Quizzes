@@ -1,0 +1,54 @@
+[
+  {
+    "question": "¿Cuál es el objetivo principal del UX?",
+    "options": [
+      "Diseñar interfaces visuales",
+      "Mejorar la experiencia del usuario",
+      "Optimizar bases de datos"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. UX se enfoca en la experiencia completa del usuario.",
+      "incorrect": "No exactamente. UX va más allá de lo visual o técnico."
+    }
+  },
+  {
+    "question": "¿Qué técnica pertenece a investigación UX?",
+    "options": [
+      "Entrevistas con usuarios",
+      "Diseño de logos",
+      "Programación backend"
+    ],
+    "correct": 0,
+    "feedback": {
+      "correct": "Bien. Las entrevistas son clave para entender al usuario.",
+      "incorrect": "Esto no corresponde directamente a investigación UX."
+    }
+  },
+  {
+    "question": "¿Qué significa UI?",
+    "options": [
+      "User Interaction",
+      "User Interface",
+      "Universal Integration"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. UI significa interfaz de usuario.",
+      "incorrect": "Revisa el concepto de interfaz."
+    }
+  },
+  {
+    "question": "¿Cuál es una buena práctica en UX?",
+    "options": [
+      "Diseñar sin validar",
+      "Probar con usuarios",
+      "Seguir solo tendencias visuales"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Exacto. La validación es clave en UX.",
+      "incorrect": "En UX es clave validar con usuarios."
+    }
+  }
+]
