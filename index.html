@@ -181,7 +181,8 @@
 
 <script>
 const NUM_QUESTIONS = 3;
-const TAG = "ux-basico";
+const params = new URLSearchParams(window.location.search);
+const TAG = params.get("tag") || "ux-basico"; // fallback si no se pasa tag
 let current = 0;
 let selectedQuestions = [];
 let selectedOption = null;
