@@ -1,5 +1,6 @@
 [
   {
+    "tag": "ux-basico",
     "question": "¿Cuál es el objetivo principal del UX?",
     "options": [
       "Diseñar interfaces visuales",
@@ -13,6 +14,7 @@
     }
   },
   {
+    "tag": "ux-basico",
     "question": "¿Qué técnica pertenece a investigación UX?",
     "options": [
       "Entrevistas con usuarios",
@@ -26,6 +28,7 @@
     }
   },
   {
+    "tag": "ui",
     "question": "¿Qué significa UI?",
     "options": [
       "User Interaction",
@@ -39,6 +42,7 @@
     }
   },
   {
+    "tag": "ux-basico",
     "question": "¿Cuál es una buena práctica en UX?",
     "options": [
       "Diseñar sin validar",
