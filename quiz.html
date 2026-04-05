@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz UX</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    button {
+      display: block;
+      margin: 5px 0;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+    }
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Autoevaluación</h2>
+<p id="progress"></p>
+
+<div id="quiz"></div>
+
+<script>
+const NUM_QUESTIONS = 3;
+let current = 0;
+let selectedQuestions = [];
+
+fetch('questions.json')
+  .then(res => res.json())
+  .then(data => {
+    selectedQuestions = data
+      .sort(() => 0.5 - Math.random())
+      .slice(0, NUM_QUESTIONS);
+    showQuestion();
+  });
+
+function showQuestion() {
+  const q = selectedQuestions[current];
+  const container = document.getElementById("quiz");
+  const progress = document.getElementById("progress");
+
+  progress.innerText = `Pregunta ${current + 1} de ${NUM_QUESTIONS}`;
+
+  container.innerHTML = `
+    <div class="question">
+      <p>${q.question}</p>
+      ${q.options.map((opt, i) => `
+        <button onclick="checkAnswer(${i})">${opt}</button>
+      `).join('')}
+      <div id="feedback" class="feedback"></div>
+    </div>
+  `;
+}
+
+function checkAnswer(index) {
+  const q = selectedQuestions[current];
+  const feedback = document.getElementById("feedback");
+
+  if (index === q.correct) {
+    feedback.innerText = q.feedback.correct;
+    feedback.style.color = "green";
+  } else {
+    feedback.innerText = q.feedback.incorrect;
+    feedback.style.color = "red";
+  }
+
+  setTimeout(() => {
+    current++;
+    if (current < NUM_QUESTIONS) {
+      showQuestion();
+    } else {
+      document.getElementById("quiz").innerHTML = "<h3>¡Completado!</h3>";
+      document.getElementById("progress").innerText = "";
+    }
+  }, 1500);
+}
+</script>
+
+</body>
+</html>
