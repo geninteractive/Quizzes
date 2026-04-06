@@ -1,3 +1,4 @@
+
 [
   {
     "tag": "UI-S1",
@@ -280,3 +281,21 @@
     }
   }
 ]
+
+
+// Necesito crear las preguntas para el quiz de autoevaluación de mi curso. Revisa el PDF adjunto y extrae 20 preguntas. Usando la estructura del código a continuación escribe bajo el tag UI-S1 las preguntas sus respuestas y feedback correspondiente. Mantén la extensión moderada de las preguntas y respuestas.
+
+// {
+//     "tag": "ux-basico",
+//     "question": "¿Cuál es el objetivo principal del UX?",
+//     "options": [
+//       "Diseñar interfaces visuales",
+//       "Mejorar la experiencia del usuario",
+//       "Optimizar bases de datos"
+//     ],
+//     "correct": 1,
+//     "feedback": {
+//       "correct": "Correcto. UX se enfoca en la experiencia completa del usuario.",
+//       "incorrect": "No exactamente. UX va más allá de lo visual o técnico."
+//     }
+//   },
