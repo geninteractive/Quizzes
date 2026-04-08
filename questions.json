@@ -1,9 +1,6 @@
 
 [
   {
-  "_comment": "UI-S1 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////",
-  }
-  {
     "tag": "UI-S1",
     "question": "Según el texto, ¿de qué depende hacer buenos diseños armónicos y funcionales?",
     "options": [
@@ -283,9 +280,7 @@
       "incorrect": "No es correcto. El texto enfatiza que diseñar no es cuestión de 'gustos' o modas."
     }
   }
-  {
-  "_comment": "UX-S1-1 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////",
-  }
+
   {
     "tag": "UX-S1-1",
     "question": "Según el material, ¿cuál es la probabilidad de vender a un cliente existente en comparación con uno nuevo?",
