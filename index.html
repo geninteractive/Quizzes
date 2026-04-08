@@ -2,14 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz MCUX</title>
+  <title>Quiz</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Lato', Arial, sans-serif;
@@ -17,31 +13,11 @@
       padding: 20px;
     }
 
-    /* ── PANTALLA INICIAL ── */
-    .intro-box {
-      text-align: center;
-      padding: 10px 0 20px;
-    }
-
-    .intro-box h3 {
-      font-size: 1.1em;
-      color: #222;
-      margin-bottom: 8px;
-    }
-
-    .intro-box p {
-      font-size: 0.93em;
-      color: #555;
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-
-    .intro-options {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    /* ── INTRO ── */
+    .intro-box { text-align: center; padding: 10px 0 20px; }
+    .intro-box h3 { font-size: 1.1em; color: #222; margin-bottom: 8px; }
+    .intro-box p { font-size: 0.93em; color: #555; margin-bottom: 24px; line-height: 1.5; }
+    .intro-options { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
 
     .btn-qty {
       background: #fff;
@@ -55,11 +31,7 @@
       font-family: 'Lato', Arial, sans-serif;
       transition: background 0.2s, color 0.2s;
     }
-
-    .btn-qty:hover {
-      background: #5454E9;
-      color: #fff;
-    }
+    .btn-qty:hover { background: #5454E9; color: #fff; }
 
     /* ── QUIZ ── */
     .progress-label {
@@ -80,13 +52,7 @@
       font-weight: bold;
     }
 
-    .options-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
+    .options-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 
     .option-btn {
       width: 100%;
@@ -101,70 +67,14 @@
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s;
     }
+    .option-btn:hover:not(:disabled) { border-color: #5454E9; background: #f0f0fd; }
+    .option-btn.selected { border-color: #5454E9; background: #ebebfb; color: #3333b0; font-weight: bold; }
+    .option-btn.correct { border-color: #2e7d32; background: #e8f5e9; color: #1b5e20; font-weight: bold; }
+    .option-btn.incorrect { border-color: #c62828; background: #ffebee; color: #b71c1c; font-weight: bold; }
+    .option-btn.dimmed { opacity: 0.4; }
+    .option-btn:disabled { cursor: default; }
 
-    .option-btn:hover:not(:disabled) {
-      border-color: #5454E9;
-      background: #f0f0fd;
-    }
-
-    .option-btn.selected {
-      border-color: #5454E9;
-      background: #ebebfb;
-      color: #3333b0;
-      font-weight: bold;
-    }
-
-    .option-btn.correct {
-      border-color: #2e7d32;
-      background: #e8f5e9;
-      color: #1b5e20;
-      font-weight: bold;
-    }
-
-    .option-btn.incorrect {
-      border-color: #c62828;
-      background: #ffebee;
-      color: #b71c1c;
-      font-weight: bold;
-    }
-
-    .option-btn.dimmed {
-      opacity: 0.4;
-    }
-
-    .option-btn:disabled {
-      cursor: default;
-    }
-
-    .feedback-box {
-      display: none;
-      border-radius: 4px;
-      padding: 10px 14px;
-      font-size: 0.92em;
-      line-height: 1.5;
-      margin-bottom: 18px;
-      border-left: 4px solid;
-    }
-
-    .feedback-box.correct {
-      background: #e8f5e9;
-      border-color: #2e7d32;
-      color: #1b5e20;
-      display: block;
-    }
-
-    .feedback-box.incorrect {
-      background: #ffebee;
-      border-color: #c62828;
-      color: #b71c1c;
-      display: block;
-    }
-
-    .action-row {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-    }
+    .action-row { display: flex; justify-content: flex-end; margin-top: 16px; }
 
     .btn-check {
       background: #5454E9;
@@ -178,15 +88,42 @@
       cursor: pointer;
       transition: background 0.2s;
     }
+    .btn-check:hover:not(:disabled) { background: #3333b0; }
+    .btn-check:disabled { background: #adb5bd; cursor: not-allowed; }
 
-    .btn-check:hover:not(:disabled) {
-      background: #3333b0;
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    .modal-overlay.visible { display: flex; }
+
+    .modal {
+      background: #fff;
+      border-radius: 6px;
+      padding: 24px 24px 20px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+      border-top: 4px solid #5454E9;
     }
 
-    .btn-check:disabled {
-      background: #adb5bd;
-      cursor: not-allowed;
+    .modal-feedback {
+      font-size: 0.95em;
+      line-height: 1.6;
+      margin-bottom: 18px;
+      padding: 10px 14px;
+      border-radius: 4px;
+      border-left: 4px solid;
     }
+    .modal-feedback.correct { background: #e8f5e9; border-color: #2e7d32; color: #1b5e20; }
+    .modal-feedback.incorrect { background: #ffebee; border-color: #c62828; color: #b71c1c; }
+
+    .modal-actions { display: flex; justify-content: flex-end; }
 
     .btn-next {
       background: #5454E9;
@@ -198,64 +135,22 @@
       font-weight: bold;
       font-family: 'Lato', Arial, sans-serif;
       cursor: pointer;
-      display: none;
       transition: background 0.2s;
     }
+    .btn-next:hover { background: #3333b0; }
 
-    .btn-next:hover {
-      background: #3333b0;
-    }
+    /* ── RESULTADOS ── */
+    .results-box { padding: 10px 0 20px; }
+    .results-box h3 { font-size: 1.1em; color: #222; margin-bottom: 16px; }
 
-    /* ── PANTALLA FINAL ── */
-    .results-box {
-      padding: 10px 0 20px;
-    }
-
-    .results-box h3 {
-      font-size: 1.1em;
-      color: #222;
-      margin-bottom: 16px;
-    }
-
-    .score-row {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .score-card {
-      flex: 1;
-      border-radius: 4px;
-      padding: 14px;
-      text-align: center;
-    }
-
-    .score-card.good {
-      background: #e8f5e9;
-      border-left: 4px solid #2e7d32;
-    }
-
-    .score-card.bad {
-      background: #ffebee;
-      border-left: 4px solid #c62828;
-    }
-
-    .score-card .number {
-      font-size: 2em;
-      font-weight: bold;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
+    .score-row { display: flex; gap: 12px; margin-bottom: 20px; }
+    .score-card { flex: 1; border-radius: 4px; padding: 14px; text-align: center; }
+    .score-card.good { background: #e8f5e9; border-left: 4px solid #2e7d32; }
+    .score-card.bad  { background: #ffebee; border-left: 4px solid #c62828; }
+    .score-card .number { font-size: 2em; font-weight: bold; line-height: 1; margin-bottom: 4px; }
     .score-card.good .number { color: #2e7d32; }
-    .score-card.bad .number  { color: #c62828; }
-
-    .score-card .label {
-      font-size: 0.8em;
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
+    .score-card.bad  .number { color: #c62828; }
+    .score-card .label { font-size: 0.8em; color: #666; text-transform: uppercase; letter-spacing: 0.04em; }
 
     .results-message {
       font-size: 0.95em;
@@ -282,14 +177,23 @@
       display: block;
       width: 100%;
     }
-
-    .btn-retry:hover {
-      background: #3333b0;
-    }
+    .btn-retry:hover { background: #3333b0; }
   </style>
 </head>
 <body>
+
 <div id="quiz"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-feedback" id="modalFeedback"></div>
+    <div class="modal-actions">
+      <button class="btn-next" id="btnNext" onclick="nextQuestion()">Siguiente →</button>
+    </div>
+  </div>
+</div>
+
 <script>
   const params = new URLSearchParams(window.location.search);
   const TAG = params.get("tag") || "ux-basico";
@@ -310,25 +214,20 @@
       showIntro();
     });
 
-  // ── PANTALLA INICIAL ──
   function showIntro() {
     const available = allQuestions.length;
     const options = [3, 5, 10, 20].filter(n => n <= available);
-
     document.getElementById("quiz").innerHTML = `
       <div class="intro-box">
         <h3>¿Cuánto sabes de este tema? 🎯</h3>
         <p>Elige cuántas preguntas quieres enfrentar.<br>A más preguntas, mayor el reto.</p>
         <div class="intro-options">
-          ${options.map(n => `
-            <button class="btn-qty" onclick="startQuiz(${n})">${n} preguntas</button>
-          `).join('')}
+          ${options.map(n => `<button class="btn-qty" onclick="startQuiz(${n})">${n} preguntas</button>`).join('')}
         </div>
       </div>
     `;
   }
 
-  // ── INICIAR QUIZ ──
   function startQuiz(n) {
     NUM_QUESTIONS = n;
     current = 0;
@@ -340,28 +239,22 @@
     showQuestion();
   }
 
-  // ── PREGUNTA ──
   function showQuestion() {
     selectedOption = null;
     answered = false;
+    hideModal();
 
     const q = selectedQuestions[current];
-    const container = document.getElementById("quiz");
-
-    container.innerHTML = `
+    document.getElementById("quiz").innerHTML = `
       <p class="progress-label">Pregunta ${current + 1} de ${NUM_QUESTIONS}</p>
       <p class="question-text">📌 ${q.question}</p>
       <ul class="options-list">
         ${q.options.map((opt, i) => `
-          <li>
-            <button class="option-btn" id="opt-${i}" onclick="selectOption(${i})">${opt}</button>
-          </li>
+          <li><button class="option-btn" id="opt-${i}" onclick="selectOption(${i})">${opt}</button></li>
         `).join('')}
       </ul>
-      <div id="feedback" class="feedback-box"></div>
       <div class="action-row">
         <button class="btn-check" id="btnCheck" onclick="checkAnswer()" disabled>Confirmar ✓</button>
-        <button class="btn-next" id="btnNext" onclick="nextQuestion()">Siguiente →</button>
       </div>
     `;
   }
@@ -379,7 +272,6 @@
     answered = true;
 
     const q = selectedQuestions[current];
-    const feedback = document.getElementById("feedback");
     const isCorrect = selectedOption === q.correct;
 
     if (isCorrect) correctCount++; else incorrectCount++;
@@ -387,38 +279,38 @@
     document.querySelectorAll('.option-btn').forEach((btn, i) => {
       btn.disabled = true;
       btn.classList.remove('selected');
-      if (i === q.correct) {
-        btn.classList.add('correct');
-      } else if (i === selectedOption && !isCorrect) {
-        btn.classList.add('incorrect');
-      } else {
-        btn.classList.add('dimmed');
-      }
+      if (i === q.correct) btn.classList.add('correct');
+      else if (i === selectedOption && !isCorrect) btn.classList.add('incorrect');
+      else btn.classList.add('dimmed');
     });
 
+    const feedback = document.getElementById("modalFeedback");
     feedback.textContent = isCorrect ? q.feedback.correct : q.feedback.incorrect;
-    feedback.className = `feedback-box ${isCorrect ? 'correct' : 'incorrect'}`;
+    feedback.className = `modal-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
 
-    document.getElementById('btnCheck').style.display = 'none';
     const btnNext = document.getElementById('btnNext');
-    btnNext.style.display = 'inline-block';
     btnNext.textContent = current === NUM_QUESTIONS - 1 ? 'Ver resultados →' : 'Siguiente →';
+
+    showModal();
   }
+
+  function showModal() { document.getElementById("modalOverlay").classList.add("visible"); }
+  function hideModal() { document.getElementById("modalOverlay").classList.remove("visible"); }
 
   function nextQuestion() {
     current++;
     if (current < NUM_QUESTIONS) {
       showQuestion();
     } else {
+      hideModal();
       showResults();
     }
   }
 
-  // ── PANTALLA FINAL ──
   function showResults() {
     const ratio = correctCount / NUM_QUESTIONS;
     let message = "";
-    let showRetry = NUM_QUESTIONS < 20;
+    const showRetry = NUM_QUESTIONS < 20;
 
     if (ratio >= 0.75) {
       message = "¡Muy bien! Dominas el tema con soltura. Sigue así, ese nivel de preparación marca la diferencia. 💪";
@@ -428,14 +320,8 @@
       message = "Parece que este tema merece una revisión más detallada. Repasa los contenidos de la unidad y vuelve cuando te sientas listo. 📖";
     }
 
-    const retryBlock = showRetry ? `
-      <p style="font-size:0.88em; color:#777; margin-bottom:12px; text-align:center;">
-        ¿Quieres seguir practicando? Inténtalo de nuevo con una nueva selección de preguntas.
-      </p>
-      <button class="btn-retry" onclick="window.location.reload()">Volver a intentarlo 🔁</button>
-    ` : `
-      <button class="btn-retry" onclick="window.location.reload()">Repetir evaluación completa 🔁</button>
-    `;
+    const retryLabel = showRetry ? "Volver a intentarlo 🔁" : "Repetir evaluación completa 🔁";
+    const retryNote  = showRetry ? `<p style="font-size:0.88em;color:#777;margin-bottom:12px;text-align:center;">¿Quieres seguir practicando? Inténtalo de nuevo con una nueva selección de preguntas.</p>` : "";
 
     document.getElementById("quiz").innerHTML = `
       <div class="results-box">
@@ -451,25 +337,11 @@
           </div>
         </div>
         <div class="results-message">${message}</div>
-        ${retryBlock}
+        ${retryNote}
+        <button class="btn-retry" onclick="window.location.reload()">${retryLabel}</button>
       </div>
     `;
   }
 </script>
-
-<!--  <div style="border-left: #9f2146 solid 4px;">
-    <div
-        style="background: linear-gradient(0deg, rgba(234, 234, 241, 1) 0%, rgba(248, 248, 251, 1) 100%); width: 100%; overflow: hidden; height: 60px; border-radius: 0 0 0 0; padding-top: 5px; border-bottom: #dbdbdb 1px solid;">
-        <h2 style="margin-left: 40px;"><i class="far fa-file-alt fa-sm" style="color: #9f2146;"></i><strong
-                style="margin-left: 10px;">Autoevaluación de aprendizajes</strong></h2>
-    </div>
-    <div style="background-color: #f7f7fa; padding: 20px 20px 20px 30px;">
-        <p>!No es un examen!, solo vamos a revisar que tanto recuerdas de esta unidad 🤓</p>
-        <iframe src="https://geninteractive.github.io/Quizzes/?tag=UX-S1-1" width="100%" height="370"
-            loading="lazy"></iframe>
-    </div>
-</div> -->
-
-  
 </body>
 </html>
