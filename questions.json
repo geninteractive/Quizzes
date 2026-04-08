@@ -577,6 +577,8 @@
     "feedback": {
       "correct": "Correcto. Garrett advierte que su modelo no incluye consideraciones secundarias (técnicas o de contenido) ni describe un proceso de desarrollo.",
       "incorrect": "Incorrecto. En la página 12 se aclara que el modelo no incluye esas consideraciones ni define un proceso de desarrollo."
+    
+    }
     },
     {
     "tag": "UX-S1-2",
