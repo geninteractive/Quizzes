@@ -160,34 +160,6 @@
       display: block;
     }
 
-    .action-row {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-
-    .btn-check {
-      background: #5454E9;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 10px 20px;
-      font-size: 0.92em;
-      font-weight: bold;
-      font-family: 'Lato', Arial, sans-serif;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-check:hover:not(:disabled) {
-      background: #3333b0;
-    }
-
-    .btn-check:disabled {
-      background: #adb5bd;
-      cursor: not-allowed;
-    }
-
     .btn-next {
       background: #5454E9;
       color: #fff;
@@ -286,6 +258,25 @@
     .btn-retry:hover {
       background: #3333b0;
     }
+
+    .btn-confirmar {
+  display: none;
+  background: #5454E9;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 0.85em;
+  font-weight: bold;
+  font-family: 'Lato', Arial, sans-serif;
+  cursor: pointer;
+  margin-bottom: 4px;
+  width: 100%;
+  transition: background 0.2s;
+}
+.btn-confirmar:hover { background: #3333b0; }
+
+    
   </style>
 </head>
 
@@ -364,24 +355,36 @@
       <p class="question-text">📌 ${q.question}</p>
       <ul class="options-list">
         ${q.options.map((opt, i) => `
-          <li>
+          <li id="item-${i}">
             <button class="option-btn" id="opt-${i}" onclick="selectOption(${i})">${opt}</button>
           </li>
         `).join('')}
       </ul>
-      <div class="action-row">
-        <button class="btn-check" id="btnCheck" onclick="checkAnswer()" disabled>Confirmar ✓</button>
-      </div>
     `;
 }
 
   function selectOption(index) {
     if (answered) return;
     selectedOption = index;
+
     document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
     document.getElementById(`opt-${index}`).classList.add('selected');
-    document.getElementById('btnCheck').disabled = false;
-  }
+
+    // Elimina el botón confirmar anterior si existe
+    const prev = document.getElementById('btnConfirmar');
+    if (prev) prev.remove();
+
+    // Inserta el botón encima de la opción seleccionada
+    const btn = document.createElement('button');
+    btn.id = 'btnConfirmar';
+    btn.className = 'btn-confirmar';
+    btn.textContent = 'Confirmar ✓';
+    btn.style.display = 'block';
+    btn.onclick = checkAnswer;
+
+    const item = document.getElementById(`item-${index}`);
+    item.insertBefore(btn, item.firstChild);
+}
 
  function checkAnswer() {
     if (selectedOption === null || answered) return;
