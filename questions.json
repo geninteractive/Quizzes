@@ -577,8 +577,7 @@
     "feedback": {
       "correct": "Correcto. Garrett advierte que su modelo no incluye consideraciones secundarias (técnicas o de contenido) ni describe un proceso de desarrollo.",
       "incorrect": "Incorrecto. En la página 12 se aclara que el modelo no incluye esas consideraciones ni define un proceso de desarrollo."
-    }
-  }
+    },
     {
     "tag": "UX-S1-2",
     "question": "Según el PDF, ¿qué porcentaje de la sensación de que un sitio es 'fácil de usar' se debe a su arquitectura de información?",
