@@ -579,4 +579,304 @@
       "incorrect": "Incorrecto. En la página 12 se aclara que el modelo no incluye esas consideraciones ni define un proceso de desarrollo."
     }
   }
+    {
+    "tag": "UX-S1-2",
+    "question": "Según el PDF, ¿qué porcentaje de la sensación de que un sitio es 'fácil de usar' se debe a su arquitectura de información?",
+    "options": [
+      "50%",
+      "75%",
+      "85%",
+      "95%"
+    ],
+    "correct": 3,
+    "feedback": {
+      "correct": "Correcto. El PDF menciona que el 95% de esa sensación se le debe a la arquitectura de la información del sitio.",
+      "incorrect": "Incorrecto. En la página 2 se indica que aproximadamente el 95% de esa sensación se debe a la arquitectura de información."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "¿Cómo definen Rosenfeld y Morville la arquitectura de información?",
+    "options": [
+      "La disciplina que se encarga del diseño visual de interfaces",
+      "El arte y la ciencia de construir productos de información y experiencias para apoyar la usabilidad, la encontrabilidad y la comprensión",
+      "La práctica de programar bases de datos para almacenar contenido",
+      "El proceso de marketing digital para posicionar contenido"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Rosenfeld y Morville la definen como 'el arte y la ciencia de construir productos de información y experiencias para apoyar la usabilidad, la encontrabilidad y la comprensión'.",
+      "incorrect": "Incorrecto. Revisa la página 3 donde se cita la definición de los autores del libro más conocido sobre arquitectura de información."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "Según el material, ¿cuáles son las cuatro preocupaciones principales de quienes diseñan arquitectura de información?",
+    "options": [
+      "Diseño, color, tipografía y espacio",
+      "Organización, navegación, etiquetado y búsqueda de información",
+      "Velocidad, seguridad, escalabilidad y disponibilidad",
+      "Marketing, ventas, fidelización y retención"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Los diseñadores de AI se preocupan por cómo se organiza, navega, etiqueta y busca la información.",
+      "incorrect": "Incorrecto. La página 3 menciona explícitamente estas cuatro preocupaciones: organización, navegación, etiquetado y búsqueda."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "¿Quién es reconocido en el PDF como el 'padre de la usabilidad'?",
+    "options": [
+      "Don Norman",
+      "Peter Morville",
+      "Jesse James Garrett",
+      "Jakob Nielsen"
+    ],
+    "correct": 3,
+    "feedback": {
+      "correct": "Correcto. Jakob Nielsen es reconocido como el padre de la usabilidad.",
+      "incorrect": "Incorrecto. En la página 6 se menciona a Jakob Nielsen como 'el conocido padre de la usabilidad'."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "Según Jakob Nielsen, ¿cuáles son los dos componentes que hacen que un producto sea útil?",
+    "options": [
+      "Deseabilidad y accesibilidad",
+      "Utilidad y usabilidad",
+      "Encontrabilidad y credibilidad",
+      "Eficiencia y satisfacción"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Nielsen explica que para que un producto sea útil, debe tener tanto utilidad como usabilidad.",
+      "incorrect": "Incorrecto. En la página 7 se explica que 'útil' se compone de utilidad (funciones necesarias) y usabilidad (facilidad de uso)."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "Según Nielsen, ¿a qué se refiere específicamente la 'utilidad' de un producto?",
+    "options": [
+      "A que el producto sea fácil de aprender y recordar",
+      "A que el producto ofrezca las funciones que los usuarios necesitan o desean",
+      "A que el producto tenga un diseño estético y minimalista",
+      "A que el producto sea accesible para personas con discapacidades"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. La utilidad se refiere a que el producto ofrezca las funciones que los usuarios necesitan o desean.",
+      "incorrect": "Incorrecto. La página 7 aclara que utilidad = funciones necesarias; usabilidad = facilidad de uso."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "¿Cuál de los siguientes es el PRIMER principio de usabilidad de Nielsen según el PDF?",
+    "options": [
+      "Coincidencia entre el sistema y el mundo real",
+      "Prevención de errores",
+      "Visibilidad del estado del sistema",
+      "Control y libertad del usuario"
+    ],
+    "correct": 2,
+    "feedback": {
+      "correct": "Correcto. El primer principio es 'Visibilidad del estado del sistema'.",
+      "incorrect": "Incorrecto. En la página 9, el primer heurístico es 'Visibilidad del estado del sistema'."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "El principio de usabilidad 'Coincidencia entre el sistema y el mundo real' sugiere que el diseño debe:",
+    "options": [
+      "Usar la jerga técnica más avanzada disponible",
+      "Hablar el idioma de los usuarios con palabras y conceptos familiares",
+      "Ser completamente innovador sin seguir convenciones existentes",
+      "Priorizar la estética sobre la claridad del mensaje"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. El diseño debe hablar el idioma de los usuarios, usando palabras, frases y conceptos familiares.",
+      "incorrect": "Incorrecto. La página 9 explica que se deben usar palabras familiares, no jerga interna."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "¿Qué describe el principio de 'Control y libertad del usuario'?",
+    "options": [
+      "Los usuarios deben poder personalizar toda la interfaz",
+      "Los usuarios necesitan una 'salida de emergencia' claramente marcada para salir de acciones no deseadas",
+      "Los usuarios deben tener acceso completo al código del sistema",
+      "Los usuarios pueden modificar las reglas del sistema a su gusto"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Los usuarios necesitan una 'salida de emergencia' claramente marcada para acciones no deseadas.",
+      "incorrect": "Incorrecto. Revisa la página 9: 'Necesitan una salida de emergencia claramente marcada para salir de la acción no deseada'."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "Según el principio de 'Reconocimiento en lugar de recuerdo', ¿qué debe hacer el diseño?",
+    "options": [
+      "Ocultar la mayoría de las opciones para simplificar la pantalla",
+      "Hacer visibles los elementos, acciones y opciones para minimizar la carga de memoria",
+      "Forzar al usuario a memorizar atajos de teclado complejos",
+      "Mostrar toda la información solo después de un tutorial extenso"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. El diseño debe hacer visibles los elementos, acciones y opciones para minimizar la carga de memoria del usuario.",
+      "incorrect": "Incorrecto. La página 10 indica que se deben hacer visibles los elementos para que el usuario no tenga que recordar información."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "El principio de 'Flexibilidad y eficiencia de uso' permite que el diseño satisfaga tanto a usuarios inexpertos como experimentados mediante:",
+    "options": [
+      "Reduciendo todas las funciones a las más básicas",
+      "Usando un solo camino para realizar cada tarea",
+      "Accesos directos que aceleran la interacción para el usuario experto",
+      "Eliminando todas las opciones avanzadas"
+    ],
+    "correct": 2,
+    "feedback": {
+      "correct": "Correcto. Los accesos directos, ocultos para usuarios novatos, aceleran la interacción para el experto.",
+      "incorrect": "Incorrecto. La página 10 menciona que los accesos directos permiten satisfacer a ambos tipos de usuarios."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "¿Qué sugiere el principio de 'Diseño estético y minimalista'?",
+    "options": [
+      "Usar la menor cantidad de colores posible",
+      "Las interfaces no deben contener información irrelevante o que rara vez se necesite",
+      "Eliminar todas las imágenes del diseño",
+      "Usar solo texto en blanco y negro"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Las interfaces no deben contener información irrelevante o que rara vez se necesite.",
+      "incorrect": "Incorrecto. La página 10 explica que cada unidad adicional de información compite con las relevantes."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "Según el principio de 'Ayuda a los usuarios a reconocer, diagnosticar y recuperarse de errores', los mensajes de error deben:",
+    "options": [
+      "Mostrar códigos numéricos para que el soporte técnico los entienda",
+      "Expresarse en lenguaje sencillo, indicar el problema y sugerir una solución",
+      "Ser lo más breves posible, idealmente una sola palabra",
+      "Ocultarse para no alarmar al usuario"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Los mensajes deben ser en lenguaje sencillo, indicar el problema con precisión y sugerir una solución constructiva.",
+      "incorrect": "Incorrecto. La página 10 detalla que los mensajes deben ser claros, precisos y ofrecer soluciones."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "¿Cuál es la mejor aproximación según el principio de 'Prevención de errores'?",
+    "options": [
+      "Mostrar mensajes de error detallados cuando algo falla",
+      "Diseñar para que los problemas no ocurran en primer lugar",
+      "Permitir que los errores ocurran y luego ofrecer soluciones",
+      "Registrar todos los errores para análisis posterior"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Los mejores diseños evitan cuidadosamente que ocurran problemas en primer lugar.",
+      "incorrect": "Incorrecto. La página 10 indica que 'los mejores diseños evitan cuidadosamente que ocurran problemas en primer lugar'."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "Según el PDF, ¿qué relación existe entre la usabilidad y la arquitectura de información?",
+    "options": [
+      "Son disciplinas completamente independientes sin relación",
+      "La arquitectura de información apoya la usabilidad y la encontrabilidad",
+      "La usabilidad reemplaza a la arquitectura de información",
+      "Son exactamente la misma disciplina con diferente nombre"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. La arquitectura de información se define como 'el arte y la ciencia de construir... experiencias para apoyar la usabilidad, la encontrabilidad y la comprensión'.",
+      "incorrect": "Incorrecto. En la página 3 se establece que la AI apoya directamente a la usabilidad."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "¿Qué analogía utiliza el PDF para explicar la importancia de la arquitectura de información?",
+    "options": [
+      "La organización de productos en un supermercado",
+      "La construcción de un rascacielos",
+      "El diseño de un automóvil",
+      "La creación de una obra de teatro"
+    ],
+    "correct": 0,
+    "feedback": {
+      "correct": "Correcto. El PDF compara la AI con la organización de productos en un supermercado para facilitar el consumo.",
+      "incorrect": "Incorrecto. En la página 3 se menciona el ejemplo del supermercado y cómo los productos se organizan cerca unos de otros."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "Según el PDF, ¿qué debe hacer un profesional de arquitectura de información?",
+    "options": [
+      "Enfocarse únicamente en la parte visual del producto",
+      "Organizar y estructurar grandes cantidades de información considerando las necesidades del usuario, su contexto y la naturaleza del contenido",
+      "Programar las bases de datos del sistema",
+      "Diseñar las campañas de marketing del producto"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. Un profesional de AI debe organizar y estructurar información tomando en cuenta las necesidades del usuario, su contexto y la naturaleza del contenido.",
+      "incorrect": "Incorrecto. El cierre del curso (página 11) describe esta responsabilidad clave del profesional de AI."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "Según el material, ¿qué se traduce en 'brindar control' a los usuarios de productos digitales?",
+    "options": [
+      "Cumplir con las expectativas de las personas",
+      "Ofrecer la mayor cantidad de funciones posibles",
+      "Tener un diseño visual llamativo",
+      "Incluir animaciones complejas"
+    ],
+    "correct": 0,
+    "feedback": {
+      "correct": "Correcto. Cumplir con las expectativas de las personas en los productos digitales se traduce en brindarles control.",
+      "incorrect": "Incorrecto. En la página 11 se establece esta relación directa entre expectativas cumplidas y control del usuario."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "¿Cuál es la analogía que usa el PDF en la introducción para explicar la arquitectura de información?",
+    "options": [
+      "La construcción de un puente",
+      "Los planos de casas y espacios de oficina, y cómo se definen recorridos y señalización según quienes los habitarán",
+      "La receta de un plato complejo",
+      "El guion de una película"
+    ],
+    "correct": 1,
+    "feedback": {
+      "correct": "Correcto. El PDF compara la AI con la arquitectura de espacios físicos: planos de casas, oficinas, recorridos y señalización.",
+      "incorrect": "Incorrecto. En la página 1 se utiliza la analogía de la arquitectura de espacios físicos y cómo se definen según quienes los habitarán."
+    }
+  },
+  {
+    "tag": "UX-S1-2",
+    "question": "Según el PDF, ¿cuál de las siguientes NO es una de las preocupaciones de la arquitectura de información?",
+    "options": [
+      "Organización de la información",
+      "Navegación",
+      "Etiquetado",
+      "Diseño visual de la interfaz"
+    ],
+    "correct": 3,
+    "feedback": {
+      "correct": "Correcto. El diseño visual no es una preocupación central de la AI; sus preocupaciones son organización, navegación, etiquetado y búsqueda.",
+      "incorrect": "Incorrecto. El diseño visual corresponde más a la capa de superficie del modelo de Garrett, no a la AI propiamente dicha."
+    }
+  }
 ]
