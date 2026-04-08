@@ -263,13 +263,7 @@ gap: 12px;
       background: #3333b0;
     }
 
-.option-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  width: 100%;
-}
+
 
 .btn-confirmar {
   display: none;
@@ -362,22 +356,22 @@ function showQuestion() {
     const q = selectedQuestions[current];
     const container = document.getElementById("quiz");
 
-    container.innerHTML = `
-      <p class="progress-label">Pregunta ${current + 1} de ${NUM_QUESTIONS}</p>
-      <p class="question-text">📌 ${q.question}</p>
-      <ul class="options-list">
-        ${q.options.map((opt, i) => `
-          <li>
-            <button class="option-btn" id="opt-${i}" onclick="selectOption(${i})">
-              <div class="option-inner">
-                <span>${opt}</span>
-                <button class="btn-confirmar" id="confirm-${i}" onclick="event.stopPropagation(); checkAnswer()">Confirmar ✓</button>
-              </div>
-            </button>
-          </li>
-        `).join('')}
-      </ul>
-    `;
+  container.innerHTML = `
+  <p class="progress-label">Pregunta ${current + 1} de ${NUM_QUESTIONS}</p>
+  <p class="question-text">📌 ${q.question}</p>
+  <ul class="options-list">
+    ${q.options.map((opt, i) => `
+      <li>
+        <div class="option-btn" id="opt-${i}" onclick="selectOption(${i})">
+          <span>${opt}</span>
+          <button class="btn-confirmar" id="confirm-${i}" onclick="event.stopPropagation(); checkAnswer()">Confirmar ✓</button>
+        </div>
+      </li>
+    `).join('')}
+  </ul>
+`;
+
+   
 }
 
 function selectOption(index) {
@@ -400,13 +394,13 @@ function selectOption(index) {
 
     if (isCorrect) correctCount++; else incorrectCount++;
 
-    document.querySelectorAll('.option-btn').forEach((btn, i) => {
-      btn.disabled = true;
-      btn.classList.remove('selected');
-      if (i === q.correct) btn.classList.add('correct');
-      else if (i === selectedOption && !isCorrect) btn.classList.add('incorrect');
-      else btn.classList.add('dimmed');
-    });
+    document.querySelectorAll('.option-btn').forEach((el, i) => {
+  el.onclick = null;
+  el.classList.remove('selected');
+  if (i === q.correct) el.classList.add('correct');
+  else if (i === selectedOption && !isCorrect) el.classList.add('incorrect');
+  else el.classList.add('dimmed');
+});
 
     const feedback = document.getElementById("modalFeedback");
     feedback.textContent = isCorrect ? q.feedback.correct : q.feedback.incorrect;
