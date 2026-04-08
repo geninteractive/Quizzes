@@ -288,6 +288,16 @@
     }
   </style>
 </head>
+
+  <div id="modalOverlay" style="display:none; position:fixed; inset:0; align-items:center; justify-content:center; z-index:100;">
+  <div style="background:#fff; border-radius:6px; padding:24px 24px 20px; width:90%; max-width:420px; box-shadow:0 4px 24px rgba(0,0,0,0.13); border-top:4px solid #5454E9;">
+    <div id="modalFeedback" style="font-size:0.95em; line-height:1.6; margin-bottom:18px; padding:10px 14px; border-radius:4px; border-left:4px solid;"></div>
+    <div style="display:flex; justify-content:flex-end;">
+      <button id="btnNext" onclick="nextQuestion()" style="background:#5454E9; color:#fff; border:none; border-radius:4px; padding:10px 20px; font-size:0.92em; font-weight:bold; font-family:'Lato',Arial,sans-serif; cursor:pointer;">Siguiente →</button>
+    </div>
+  </div>
+</div>
+  
 <body>
 <div id="quiz"></div>
 <script>
@@ -341,9 +351,10 @@
   }
 
   // ── PREGUNTA ──
-  function showQuestion() {
+ function showQuestion() {
     selectedOption = null;
     answered = false;
+    document.getElementById("modalOverlay").style.display = "none";
 
     const q = selectedQuestions[current];
     const container = document.getElementById("quiz");
@@ -358,13 +369,11 @@
           </li>
         `).join('')}
       </ul>
-      <div id="feedback" class="feedback-box"></div>
       <div class="action-row">
         <button class="btn-check" id="btnCheck" onclick="checkAnswer()" disabled>Confirmar ✓</button>
-        <button class="btn-next" id="btnNext" onclick="nextQuestion()">Siguiente →</button>
       </div>
     `;
-  }
+}
 
   function selectOption(index) {
     if (answered) return;
@@ -374,12 +383,11 @@
     document.getElementById('btnCheck').disabled = false;
   }
 
-  function checkAnswer() {
+ function checkAnswer() {
     if (selectedOption === null || answered) return;
     answered = true;
 
     const q = selectedQuestions[current];
-    const feedback = document.getElementById("feedback");
     const isCorrect = selectedOption === q.correct;
 
     if (isCorrect) correctCount++; else incorrectCount++;
@@ -387,32 +395,33 @@
     document.querySelectorAll('.option-btn').forEach((btn, i) => {
       btn.disabled = true;
       btn.classList.remove('selected');
-      if (i === q.correct) {
-        btn.classList.add('correct');
-      } else if (i === selectedOption && !isCorrect) {
-        btn.classList.add('incorrect');
-      } else {
-        btn.classList.add('dimmed');
-      }
+      if (i === q.correct) btn.classList.add('correct');
+      else if (i === selectedOption && !isCorrect) btn.classList.add('incorrect');
+      else btn.classList.add('dimmed');
     });
 
+    const feedback = document.getElementById("modalFeedback");
     feedback.textContent = isCorrect ? q.feedback.correct : q.feedback.incorrect;
-    feedback.className = `feedback-box ${isCorrect ? 'correct' : 'incorrect'}`;
+    feedback.style.background = isCorrect ? "#e8f5e9" : "#ffebee";
+    feedback.style.borderColor = isCorrect ? "#2e7d32" : "#c62828";
+    feedback.style.color = isCorrect ? "#1b5e20" : "#b71c1c";
 
-    document.getElementById('btnCheck').style.display = 'none';
     const btnNext = document.getElementById('btnNext');
-    btnNext.style.display = 'inline-block';
     btnNext.textContent = current === NUM_QUESTIONS - 1 ? 'Ver resultados →' : 'Siguiente →';
-  }
 
-  function nextQuestion() {
+    const overlay = document.getElementById("modalOverlay");
+    overlay.style.display = "flex";
+}
+
+function nextQuestion() {
+    document.getElementById("modalOverlay").style.display = "none";
     current++;
     if (current < NUM_QUESTIONS) {
       showQuestion();
     } else {
       showResults();
     }
-  }
+}
 
   // ── PANTALLA FINAL ──
   function showResults() {
